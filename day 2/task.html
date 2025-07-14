@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Fundamentals - Days 1 & 2</title>
+    <style>
+        /* Day 1: CSS Text & Font Properties */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+        }
+
+        .text-sample {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .bold-text {
+            font-weight: bold;
+        }
+
+        .important-text {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .emphasized-text {
+            font-style: italic;
+        }
+
+        .highlight {
+            background-color: #fffde7;
+            padding: 0 3px;
+        }
+
+        .small-text {
+            font-size: 0.8em;
+        }
+
+        .superscript {
+            vertical-align: super;
+            font-size: smaller;
+        }
+
+        .subscript {
+            vertical-align: sub;
+            font-size: smaller;
+        }
+
+        /* Day 2: CSS Background Properties */
+        .background-demo {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .solid-bg {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(45deg, #a1c4fd 0%, #0b3446 100%);
+            color: white;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+        }
+
+        .image-bg {
+            background-image: url('bg2.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            /* display: flex;
+            align-items: center;
+            justify-content: center; */
+            text-align: center;
+        }
+
+        .fixed-bg {
+            background-image: url('bg2.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            height: 300px;
+            color: white;
+            text-align: center;
+            /* display: flex;
+            align-items: center;
+            justify-content: center; */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Semantic layout styling */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            background-color: #34495e;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        article {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        aside {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-left: 3px solid #3498db;
+            margin: 20px 0;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Day 1: HTML Document Structure -->
+    <header>
+        <h1>HTML & CSS Fundamentals</h1>
+        <p>Days 1 & 2 Combined Example</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#day1">Day 1</a></li>
+            <li><a href="#day2">Day 2</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <article id="day1">
+            <h2>Day 1: HTML Text Elements & CSS Text/Font Styling</h2>
+            
+            <section class="text-sample">
+                <h3>Heading Levels (h1-h6)</h3>
+                <h1>Heading 1</h1>
+                <h2>Heading 2</h2>
+                <h3>Heading 3</h3>
+                <h4>Heading 4</h4>
+            </section>
+
+            <section class="text-sample">
+                <h3>Paragraphs and Line Breaks</h3>
+                <p>This is a normal paragraph. It contains some text that will wrap naturally based on the container width.</p>
+                <p>This paragraph has a line break<br>right in the middle of it.</p>
+                <hr>
+                <p>This paragraph follows a horizontal rule.</p>
+            </section>
+
+            <section class="text-sample">
+                <h3>Text Formatting</h3>
+                <p>This is <b>bold text</b> (visual only).</p>
+                <p>This is <strong>strong text</strong> (semantic importance).</p>
+                <p>This is <i>italic text</i> (visual only).</p>
+                <p>This is <em>emphasized text</em> (semantic importance).</p>
+                <p>This text has <mark>highlighted portions</mark>.</p>
+                <p class="small-text">This is small text (often used for disclaimers).</p>
+                <p>H<sub>2</sub>O (subscript) vs E=mc<sup>2</sup> (superscript)</p>
+            </section>
+        </article>
+
+        <!-- Day 2: HTML Structure & CSS Backgrounds -->
+        <article id="day2">
+            <h2>Day 2: HTML Semantic Structure & CSS Backgrounds</h2>
+            
+            <section>
+                <h3>Semantic HTML Elements</h3>
+                <p>This entire document uses semantic HTML5 elements:</p>
+                <ul>
+                    <li><code>&lt;header&gt;</code> - Top section with title</li>
+                    <li><code>&lt;nav&gt;</code> - Navigation menu</li>
+                    <li><code>&lt;main&gt;</code> - Primary content</li>
+                    <li><code>&lt;article&gt;</code> - Self-contained content</li>
+                    <li><code>&lt;section&gt;</code> - Thematic grouping</li>
+                    <li><code>&lt;aside&gt;</code> - Secondary content</li>
+                    <li><code>&lt;footer&gt;</code> - Bottom section</li>
+                </ul>
+            </section>
+
+            <aside>
+                <h4>Did You Know?</h4>
+                <p>Semantic HTML helps with SEO and accessibility by giving meaning to the structure of your content.</p>
+            </aside>
+
+            <section>
+                <h3>CSS Background Properties</h3>
+                
+                <div class="background-demo solid-bg">
+                    <h4>Solid Color Background</h4>
+                    <p>Using <code>background-color</code> property</p>
+                </div>
+
+                <div class="background-demo gradient-bg">
+                    <h4>Gradient Background</h4>
+                    <p>Using <code>background: linear-gradient()</code></p>
+                </div>
+
+                <div class="background-demo image-bg">
+                    <h4>Image Background</h4>
+                    <p>Using <code>background-image</code>, <code>background-size</code>, and <code>background-position</code></p>
+                </div>
+
+                <div class="background-demo fixed-bg">
+                    <h4>Fixed Background</h4>
+                    <p>Using <code>background-attachment: fixed</code> (try scrolling)</p>
+                </div>
+            </section>
+        </article>
+    </main>
+ 
+
+    <footer>
+        <p>&copy; 2023 HTML/CSS Fundamentals. Days 1 & 2 combined example.</p>
+    </footer>
+</body>
+</html>
