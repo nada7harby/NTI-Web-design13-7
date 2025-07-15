@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Semantic Layout Task</title>
+    <style>
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        min-height: 100vh;
+        
+      }
+
+      /* HEADER with all background properties */
+      header {
+        background-color: #2c3e50;
+        background-image: linear-gradient(to right, #2c3e50, #3498db);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-attachment: scroll;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-blend-mode: multiply;
+
+        padding: 1rem;
+        text-align: center;
+        color: white;
+
+        /* Text properties */
+        color: rgba(255, 255, 255, 0.9); /* Using rgba for opacity */
+        text-align: center;
+        text-decoration: underline;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        word-spacing: 2px;
+        line-height: 1.8;
+        direction: ltr;
+        text-indent: 0;
+        white-space: normal;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        writing-mode: horizontal-tb;
+
+        opacity: 0.95;
+      }
+
+      /* NAV with inline-flex */
+      nav {
+        display: inline-flex;
+        gap: 1rem;
+        background: #34495e;
+        padding: 1rem;
+        width: 100%;
+        justify-content: center;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+
+        /* More text properties */
+        font-family: Arial, sans-serif;
+        font-size: 1rem;
+        font-style: italic;
+        font-weight: bold;
+        font-variant: small-caps;
+      }
+
+      nav a:hover {
+        background: #2980b9;
+        text-decoration: overline;
+      }
+
+      /* MAIN content */
+      main {
+        flex: 1;
+        padding: 2rem;
+        background-color: #ecf0f1;
+        background-image: radial-gradient(circle, #ecf0f1, #bdc3c7);
+
+        /* Text properties for content */
+        color: #2c3e50;
+        line-height: 1.7;
+      }
+
+      /* SECTION with opacity */
+      section {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        opacity: 0.98;
+        transition: opacity 0.3s;
+      }
+
+      section:hover {
+        opacity: 1;
+      }
+
+      /* FOOTER */
+      footer {
+        background-color: #2c3e50;
+        color: white;
+        padding: 1.5rem;
+        text-align: center;
+
+        /* Using all background properties again */
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%233498db" stroke-width="2"/></svg>');
+        background-repeat: repeat;
+        background-position: center;
+        background-size: 50px;
+      }
+
+      /* Helper classes for inline-flex demonstration */
+      .inline-flex-container {
+        
+        background: #3498db;
+        padding: 1rem;
+        margin: 1rem 0;
+        gap: 1rem;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .inline-flex-item {
+               display: inline-block;
+        background: #2980b9;
+        color: white;
+        padding: 1rem ;
+        margin: 0 20px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Semantic HTML Layout</h1>
+      <p>
+        Demonstrating all background/text properties with opacity and
+        inline-flex
+      </p>
+    </header>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <main>
+      <section>
+        <h2>Main Content Section</h2>
+        <p>
+          This section demonstrates opacity effects on hover and comprehensive
+          text styling.
+        </p>
+
+        <div class="inline-flex-container">
+          <div class="inline-flex-item">Item 1</div>
+          <div class="inline-flex-item"> Item 2</div>
+          <div class="inline-flex-item">Item 3</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Another Section</h2>
+        <p>
+          Notice how the opacity changes slightly when hovering over sections.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Semantic Layout Demo. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
