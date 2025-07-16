@@ -1,0 +1,44 @@
+body {
+  height: 300vh;
+  padding: 20px;
+  background: linear-gradient(to bottom, red, blue);
+}
+
+.parent {
+  width: 500px;
+  height: 600px;
+               background-color: rgb(165, 98, 16);
+ 
+  border-radius: 20px;
+  position: sticky;
+left: 20px;
+top: 20px;
+  padding: 10px;
+}
+.child {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  border-radius: 10px;
+  position: absolute;
+  z-index:10;
+  /* top:20px */
+  left: 20;
+  top: 20px;
+}
+.parent p {
+  width: 50%;
+  position: absolute;
+  left: 0;
+  z-index: 12;
+}
+
+.p1 {
+  background-color: aqua;
+  top: 0px;
+  left: 60px;
+}
+
+.p2 {
+  
+}

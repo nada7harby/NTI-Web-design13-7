@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML & CSS Task</title>
+    <style>
+      /* 🔹 Reset */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* 🔹 Header */
+      header {
+        background-color: #003366;
+        color: white;
+        padding: 20px;
+        position: fixed;
+        width: 100%;
+      }
+
+      .logo {
+        display: inline-block;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      nav {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 15px;
+        text-transform: uppercase;
+      }
+
+      nav a:hover {
+        text-decoration: underline;
+      }
+
+      /* 🔹 Main */
+      main {
+        padding: 60px 30px 30px 30px;
+        background: linear-gradient(to bottom, #f0f0f0, #dcdcdc);
+      }
+
+      section {
+        margin-bottom: 50px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .card {
+        display: inline-block;
+        width: 30%;
+        margin: 10px;
+        background-color: #e0f7fa;
+        text-align: center;
+        vertical-align: top;
+      }
+      .card div {
+        padding: 15px;
+      }
+
+      .card img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+
+      .card h3 {
+        color: #00796b;
+        text-transform: capitalize;
+      }
+
+      .info-section {
+        padding: 20px;
+        background-image: url("https://via.placeholder.com/800x200");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        text-shadow: 1px 1px 3px black;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff3e0;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #ffcc80;
+        text-transform: uppercase;
+      }
+
+      td {
+        text-transform: capitalize;
+      }
+      .info-section-expanded {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(to right, #004d40, #00695c);
+        color: white;
+        padding: 40px 30px;
+        gap: 40px;
+        border-radius: 10px;
+        margin-bottom: 50px;
+      }
+
+      .why-text {
+        width: 80%;
+      }
+
+      .why-img img {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .features-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 15px;
+      }
+
+      .features-list li {
+        background-color: #00796b;
+        padding: 10px 15px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: capitalize;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+      footer {
+        background-color: #263238;
+        color: #ffffff;
+        padding: 40px 20px 20px;
+        margin-top: 50px;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+
+      .footer-section {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .footer-section h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #4db6ac;
+        display: inline-block;
+        padding-bottom: 5px;
+      }
+
+      .footer-section p,
+      .footer-section a {
+        font-size: 15px;
+        color: #cfd8dc;
+        text-decoration: none;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .footer-section a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        font-size: 14px;
+        border-top: 1px solid #4db6ac;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 🔹 Header -->
+    <header>
+      <div class="logo">My Logo</div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+
+    <!-- 🔹 Main -->
+    <main>
+      <!-- Section 1: Cards -->
+      <section>
+        <h2>Our Services</h2>
+        <div class="card">
+          <img src="img1.jpg" alt="service 1" />
+          <div>
+            <h3>web design</h3>
+            <p>We offer modern and responsive web design.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="img1.jpg" alt="service 2" />
+          <div>
+            <h3>seo</h3>
+            <p>Optimize your website for better visibility.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="img1.jpg" alt="service 3" />
+          <div>
+            <h3>hosting</h3>
+            <p>Reliable and secure web hosting services.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Background + Text Styles -->
+      <!-- Section 2: Background + Text Styles + Content -->
+      <section class="info-section-expanded">
+        <div class="why-text">
+          <h2>Why Choose Us?</h2>
+          <p>
+            Our team brings years of experience in crafting custom websites that
+            are not only visually appealing but also functional and
+            user-friendly. We listen to your needs, analyze your goals, and work
+            with you closely to bring your vision to life.
+          </p>
+          <ul class="features-list">
+            <li>Fast & Responsive Websites</li>
+            <li>SEO Optimization</li>
+            <li>Clean & Modern Design</li>
+            <li>Ongoing Support & Maintenance</li>
+          </ul>
+        </div>
+        <div class="why-img">
+          <img src="Attack On Titan (18).jpg" alt="Team Work" />
+        </div>
+      </section>
+
+      <!-- Section 3: Table -->
+      <section>
+        <h2>Team Members</h2>
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Email</th>
+          </tr>
+          <tr>
+            <td>nada harby</td>
+            <td>front-end developer</td>
+            <td>nada@example.com</td>
+          </tr>
+          <tr>
+            <td>ahmed mostafa</td>
+            <td>UI designer</td>
+            <td>ahmed@example.com</td>
+          </tr>
+          <tr>
+            <td>salma adel</td>
+            <td>back-end developer</td>
+            <td>salma@example.com</td>
+          </tr>
+        </table>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p>
+            We specialize in building powerful websites with a focus on design,
+            usability, and performance.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>Email: info@example.com</p>
+          <p>Phone: +20 123-456-789</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 My Website | All Rights Reserved
+      </div>
+    </footer>
+  </body>
+</html>
