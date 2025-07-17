@@ -1,0 +1,91 @@
+.parent {
+  background-color: rgb(9, 91, 150);
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  padding: 20px;
+  color: #fff;
+}
+
+
+input{
+               margin: 20px;
+
+}
+input:hover{
+                 border: 6px solid rgb(61, 195, 8);
+}
+input:focus{
+               border: 6px solid rgb(82, 82, 191);
+               box-shadow: 2px 2px 30px 10px rgba(0, 0, 255, 0.284);
+}
+a{
+               font-size: 20px;
+               text-decoration: none;
+               background-color: aquamarine;
+               border-radius: 20px;
+               padding: 20px;
+               transition-duration:2s ;
+               transition-property: all;
+               transition-delay:1s ;
+
+}
+a:hover{
+               background-color: blue;
+               font-size: 10px;
+               border-radius:30px ;
+}
+a:visited{
+               color: rgb(110, 181, 59);
+}
+input:disabled{
+               background-color: blue;
+               border: 5px solid red;
+}
+select:focus{
+               background-color: bisque;
+}
+.parent span:first-child{
+            color: red;
+}
+.parent p:last-child{
+            color: rgb(220, 228, 104);
+}
+.parent{
+               position: relative;
+}
+.parent::before{
+               content: "👩🏻‍🦰";
+               width:230px;
+               height: 10px;
+               background-color: aquamarine;
+               position: absolute;
+               top: 10px;
+               left: 0;
+}.parent::after{
+               content: "";
+               background-color: rgb(14, 9, 150);
+         width: 100px;
+         height: 30px;
+               position: absolute;
+                bottom: 20px;
+               left: 10px;
+               
+              
+}
+p::first-line{
+               color: blue;
+               font-size: 30px;
+}
+p::first-letter{
+               font-size: 60px;
+               color: blueviolet;
+}
+/* p::selection{
+      background-color: chartreuse;         
+      color: blueviolet;
+} */
+ p::selection{
+               background-color: bisque;
+               color: rgb(182, 151, 107);
+ }
