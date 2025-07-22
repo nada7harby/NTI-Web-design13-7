@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Personal Info Cards</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      padding: 50px;
+      text-align: center;
+    }
+
+    /* Base card styling */
+    .card {
+      width: 400px;
+      background-color: white;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #333;
+      margin-bottom: 15px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: justify;
+      color: #444;
+    }
+
+    mark {
+      background-color: rgb(0, 255, 234);
+    }
+
+    span.highlight {
+      background-color: lightblue;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    del {
+      text-decoration: line-through;
+      color: #999;
+    }
+
+    u {
+      text-decoration: underline;
+    }
+
+    em {
+      font-style: italic;
+      color: green;
+    }
+
+    i {
+      font-style: italic;
+      color: purple;
+    }
+
+    strong {
+      font-weight: bold;
+      color: #c0392b;
+    }
+
+    b {
+      font-weight: bold;
+      color: #2980b9;
+    }
+
+    small {
+      font-size: 12px;
+      color: #666;
+    }
+
+    sup {
+      vertical-align: super;
+      font-size: 12px;
+    }
+
+    sub {
+      vertical-align: sub;
+      font-size: 12px;
+    }
+
+    /* Second card alternative style */
+    .card-alt {
+      background-color: #f0faff;
+      border-left: 6px solid #3498db;
+      text-align: left;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-alt img {
+      width: 120px;
+      height: 120px;
+      border-radius: 10px;
+      border: 2px dashed #3498db;
+      margin-bottom: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .card-alt h1 {
+      font-size: 24px;
+      color: #1a5276;
+      text-align: left;
+    }
+
+    .card-alt p {
+      font-size: 15px;
+      color: #2c3e50;
+      line-height: 1.8;
+    }
+
+    .card-alt mark {
+      background-color: #ffeaa7;
+      color: #2d3436;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+
+    .card-alt span.highlight {
+      background-color: #dff9fb;
+      color: #130f40;
+      font-weight: bold;
+      padding: 2px 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Card 1 -->
+  <div class="card">
+    <img src="img1.jpg" alt="My Profile Photo">
+    <h1>My Name Is <strong>Nada</strong></h1>
+    <p>
+      Hello! My name is <b>Nada Harby</b>. I am a <em>front-end developer</em> who loves building <i>beautiful</i> web interfaces.
+      I <mark>enjoy learning</mark> new technologies and <u>sharing knowledge</u> with others.
+      Sometimes I have <del>lazy days</del>, but I always get back on track. <br><br>
+
+      I have experience working with <span class="highlight">HTML</span>, <span class="highlight">CSS</span>, and JavaScript.  
+      I believe that H<sub>2</sub>O is not just water, and E = mc<sup>2</sup> is more than physics!  
+      <small>This is a small note that shouldn't be missed.</small>
+    </p>
+  </div>
+
+  <!-- Card 2 - Modified -->
+  <div class="card card-alt">
+    <img src="img2.jpeg" alt="Profile Photo 2">
+    <h1>This Is <strong>Ali</strong></h1>
+    <p>
+      Hi! I'm <b>Ali Kamal</b>, a passionate <em>graphic designer</em> who enjoys creating <i>visually stunning</i> artwork.
+      I always <mark>experiment with colors</mark> and focus on <u>user emotions</u> in every design.
+      I used to <del>ignore feedback</del>, but now I <strong>value it</strong> so much. <br><br>
+
+      My tools include <span class="highlight">Photoshop</span>, <span class="highlight">Illustrator</span>, and Figma.  
+      The formula CO<sub>2</sub> shows carbon dioxide, and π = 3.14<sup>~</sup> is magical!  
+      <small>Design is not just art, it's a way of solving problems.</small>
+    </p>
+  </div>
+
+</body>
+</html>

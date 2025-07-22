@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Marketing Solutions</title>
+    <style>
+      /* 🔹 Reset & Base Styles */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      body {
+        font-family: 'Open Sans', Arial, sans-serif;
+        line-height: 1.7;
+        color: #333;
+        background-color: #f8f9fa;
+      }
+      
+      a {
+        text-decoration: none;
+      }
+      
+      img {
+        max-width: 100%;
+      }
+      
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+      }
+      
+      .section-title h2 {
+        display: inline-block;
+        font-size: 32px;
+        color: #2c3e50;
+        padding-bottom: 15px;
+      }
+      
+      .section-title h2:after {
+        content: '';
+        position: absolute;
+        width: 80px;
+        height: 3px;
+        background-color: #e74c3c;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* 🔹 Header */
+      .main-header {
+        background-color: #2c3e50;
+        color: white;
+        padding: 15px 10px;
+        position: fixed;
+        width: 100%;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        z-index: 1000;
+      }
+      
+      .header-container {
+        display: inline-block;
+        width: 100%;
+      }
+      
+      .branding {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      
+      .branding .logo {
+        font-size: 28px;
+        font-weight: 700;
+        color: #ecf0f1;
+      }
+      
+      .branding .logo span {
+        color: #e74c3c;
+      }
+      
+      .main-nav {
+        display: inline-block;
+        float: right;
+        vertical-align: middle;
+      }
+      
+      .main-nav ul {
+        list-style: none;
+      }
+      
+      .main-nav li {
+        display: inline-block;
+        margin-left: 25px;
+      }
+      
+      .main-nav a {
+        color: #ecf0f1;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 1px;
+        transition: color 0.3s;
+      }
+      
+      .main-nav a:hover {
+        color: #e74c3c;
+      }
+      
+      /* Hero Banner */
+      .hero {
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1920x600') center/cover no-repeat;
+        color: white;
+        text-align: center;
+        padding: 180px 0 100px;
+      }
+      
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      
+      .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+      
+      .hero p {
+        font-size: 20px;
+        margin-bottom: 30px;
+      }
+      
+      .btn {
+        display: inline-block;
+        background-color: #e74c3c;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 4px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+      }
+      
+      .btn:hover {
+        background-color: #c0392b;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      }
+      
+      /* Services Section */
+      .services {
+        padding: 80px 0;
+        background-color: white;
+      }
+      
+      .services-grid {
+        font-size: 0;
+      }
+      
+      .service-card {
+        display: inline-block;
+        width: 31%;
+        margin: 0 1% 30px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: all 0.3s;
+        vertical-align: top;
+        font-size: 16px;
+      }
+      
+     
+      .service-img {
+        height: 200px;
+        overflow: hidden;
+      }
+      
+      .service-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+      
+    
+      
+      .service-content {
+        padding: 25px;
+      }
+      
+      .service-content h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 22px;
+      }
+      
+      .service-content p {
+        color: #7f8c8d;
+        margin-bottom: 20px;
+      }
+      
+      .service-meta {
+        color: #e74c3c;
+        font-weight: 600;
+      }
+      
+      /* Results Section */
+      .results {
+        padding: 80px 0;
+        background: linear-gradient(135deg, #3498db, #2c3e50);
+        color: white;
+      }
+      
+      .results-grid {
+        display: inline-block;
+        width: 100%;
+      }
+      
+      .results-content {
+        display: inline-block;
+        width: 48%;
+        vertical-align: middle;
+        padding-right: 4%;
+      }
+      
+      .results-stats {
+        display: inline-block;
+        width: 48%;
+        vertical-align: middle;
+      }
+      
+      .stat-item {
+        margin-bottom: 30px;
+      }
+      
+      .stat-item h3 {
+        font-size: 42px;
+        margin-bottom: 5px;
+        color: #f1c40f;
+      }
+      
+      /* Team Section with Advanced Table */
+      .team {
+        padding: 80px 0;
+        background-color: white;
+      }
+      
+      .team-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 40px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      
+      .team-table caption {
+        text-align: left;
+        font-size: 24px;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        padding-left: 10px;
+      }
+      
+      .team-table thead {
+        background-color: #e74c3c;
+        color: white;
+      }
+      
+      .team-table th {
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      
+      .team-table td {
+        padding: 15px;
+        border-bottom: 1px solid #ecf0f1;
+        vertical-align: middle;
+      }
+      
+      .team-table tbody tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+      
+      .team-table tbody tr:hover {
+        background-color: #e8f4fc;
+      }
+      
+      .team-table .team-photo {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #e74c3c;
+      }
+      
+      .team-table .department-head {
+        background-color: #f1f8e9;
+        font-weight: 600;
+      }
+      
+      .team-table .merged-cell {
+        background-color: #2c3e50;
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      
+      /* Contact Form */
+      .contact {
+        padding: 80px 0;
+        background-color: #f8f9fa;
+      }
+      
+      .contact-container {
+        display: inline-block;
+        width: 100%;
+      }
+      
+      .contact-info {
+        display: inline-block;
+        width: 35%;
+        vertical-align: top;
+        padding-right: 5%;
+      }
+      
+      .contact-form {
+        display: inline-block;
+        width: 60%;
+        vertical-align: top;
+        background-color: white;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      
+      .info-item {
+        margin-bottom: 30px;
+      }
+      
+      .info-item h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 20px;
+      }
+      
+      .info-item p {
+        color: #7f8c8d;
+      }
+      
+      .form-group {
+        margin-bottom: 20px;
+      }
+      
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #2c3e50;
+      }
+      
+      .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: inherit;
+        transition: all 0.3s;
+      }
+      
+      .form-control:focus {
+        border-color: #3498db;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
+      }
+      
+      textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+      }
+      
+      .btn-block {
+        display: block;
+        width: 100%;
+      }
+      
+      /* Footer */
+      .main-footer {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        padding: 60px 0 0;
+      }
+      
+      .footer-grid {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 40px;
+      }
+      
+      .footer-col {
+        display: inline-block;
+        width: 23%;
+        margin-right: 2%;
+        vertical-align: top;
+      }
+      
+      .footer-col:last-child {
+        margin-right: 0;
+      }
+      
+      .footer-col h3 {
+        color: #f1c40f;
+        margin-bottom: 25px;
+        font-size: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #e74c3c;
+      }
+      
+      .footer-col p, .footer-col a {
+        color: #bdc3c7;
+        margin-bottom: 15px;
+        display: block;
+        transition: color 0.3s;
+      }
+      
+      .footer-col a:hover {
+        color: #e74c3c;
+      }
+      
+      .social-links a {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 18px;
+      }
+      
+      .copyright {
+        text-align: center;
+        padding: 20px 0;
+        border-top: 1px solid #34495e;
+        color: #bdc3c7;
+        font-size: 14px;
+      }
+      
+      /* Responsive */
+      @media (max-width: 992px) {
+        .service-card {
+          width: 48%;
+        }
+        
+        .results-content, 
+        .results-stats,
+        .contact-info,
+        .contact-form {
+          width: 100%;
+          display: block;
+          padding-right: 0;
+          margin-bottom: 30px;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .branding, .main-nav {
+          width: 100%;
+          display: block;
+          text-align: center;
+        }
+        
+        .main-nav {
+          margin-top: 15px;
+          float: none;
+        }
+        
+        .main-nav li {
+          margin: 0 10px;
+        }
+        
+        .service-card,
+        .footer-col {
+          width: 100%;
+          display: block;
+          margin-right: 0;
+          margin-bottom: 30px;
+        }
+        
+        .hero h1 {
+          font-size: 36px;
+        }
+        
+        .team-table {
+          display: block;
+          overflow-x: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="main-header">
+      <div class="container header-container">
+        <div class="branding">
+          <a href="#" class="logo">MARKET<span>PRO</span></a>
+        </div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#Results">Results</a></li>
+            <li><a href="#Marketing">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Transform Your Digital Presence</h1>
+          <p>Data-driven marketing strategies that deliver measurable results and accelerate your business growth</p>
+          <a href="#contact" class="btn">Get Started Today</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Marketing Services</h2>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-img">
+              <img src="img1.jpg" alt="SEO Services">
+            </div>
+            <div class="service-content">
+              <h3>Search Engine Optimization</h3>
+              <p>Improve your website's visibility in organic search results with our comprehensive SEO strategies tailored to your business goals.</p>
+              <div class="service-meta">Results in 3-6 months</div>
+            </div>
+          </article>
+          
+          <article class="service-card">
+            <div class="service-img">
+              <img src="img1.jpg" alt="PPC Campaigns">
+            </div>
+            <div class="service-content">
+              <h3>Pay-Per-Click Advertising</h3>
+              <p>Launch targeted ad campaigns that drive qualified traffic to your website and maximize your return on ad spend.</p>
+              <div class="service-meta">Immediate results</div>
+            </div>
+          </article>
+          
+          <article class="service-card">
+            <div class="service-img">
+              <img src="img1.jpg" alt="Content Marketing">
+            </div>
+            <div class="service-content">
+              <h3>Content Marketing</h3>
+              <p>Engage your audience with valuable content that builds trust, establishes authority, and drives conversions.</p>
+              <div class="service-meta">Ongoing strategy</div>
+            </div>
+          </article>
+          
+     
+          
+       
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="results" id="Results">
+      <div class="container">
+        <div class="results-grid">
+          <div class="results-content">
+            <h2>Proven Marketing Results</h2>
+            <p>We don't just promise results - we deliver them. Our data-driven approach ensures that every marketing dollar is working hard for your business.</p>
+            <p>Whether you need more leads, higher conversion rates, or increased brand awareness, our team has the expertise to develop and execute strategies that move the needle.</p>
+            <a href="#contact" class="btn">See Case Studies</a>
+          </div>
+          <div class="results-stats">
+            <div class="stat-item">
+              <h3>187%</h3>
+              <p>Average increase in organic traffic for our SEO clients</p>
+            </div>
+            <div class="stat-item">
+              <h3>3.2x</h3>
+              <p>Higher conversion rates from our optimized landing pages</p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section with Advanced Table -->
+    <section id="Marketing" class="team">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Marketing Team</h2>
+        </div>
+        
+        <table class="team-table">
+          <caption>Meet Our Expert Team</caption>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Specialization</th>
+              <th>Contact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="merged-cell">
+              <td colspan="5">SEO Department</td>
+            </tr>
+            
+            <tr>
+              <td>Mike Lee</td>
+              <td>SEO Specialist</td>
+              <td>On-Page Optimization</td>
+              <td>mike@marketpro.com</td>
+            </tr>
+            <tr>
+              <td>Emma Rodriguez</td>
+              <td>Content Strategist</td>
+              <td>Keyword Research, Content</td>
+              <td>emma@marketpro.com</td>
+            </tr>
+            
+            
+            <tr class="department-head">
+              <td>David Kim</td>
+              <td>Paid Media Manager</td>
+              <td>Google Ads, Facebook Ads</td>
+              <td>david@marketpro.com</td>
+            </tr>
+            <tr>
+              <td>Lisa Moore</td>
+              <td>PPC Specialist</td>
+              <td>Search Advertising</td>
+              <td>lisa@marketpro.com</td>
+            </tr>
+            
+            <tr class="">
+              <td colspan="5">Content & Social Media Department</td>
+            </tr>
+         
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Get In Touch</h2>
+        </div>
+        
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="info-item">
+              <h3>Our Office</h3>
+              <p>123 Marketing Avenue<br>New York, NY 10001<br>United States</p>
+            </div>
+            <div class="info-item">
+              <h3>Contact Info</h3>
+              <p>Phone: (555) 123-4567<br>Email: info@marketpro.com<br>Skype: marketpro.support</p>
+            </div>
+            <div class="info-item">
+              <h3>Business Hours</h3>
+              <p>Monday - Friday: 9am to 6pm<br>Saturday: 10am to 2pm<br>Sunday: Closed</p>
+            </div>
+          </div>
+          
+          <div class="contact-form">
+            <form>
+              <div class="form-group">
+                <label for="contact-name">Full Name</label>
+                <input type="text" id="contact-name" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="contact-email">Email Address</label>
+                <input type="email" id="contact-email" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="contact-subject">Subject</label>
+                <input type="text" id="contact-subject" class="form-control">
+              </div>
+              
+              <div class="form-group">
+                <label for="contact-service">Service Interested In</label>
+                <select id="contact-service" class="form-control">
+                  <option value="">Select a service</option>
+                  <option value="seo">SEO Services</option>
+                  <option value="ppc">PPC Advertising</option>
+                  <option value="social">Social Media Marketing</option>
+                  <option value="content">Content Marketing</option>
+                  <option value="strategy">Full Marketing Strategy</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="contact-message">Your Message</label>
+                <textarea id="contact-message" class="form-control"></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-block">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>About MarketPro</h3>
+            <p>We're a full-service digital marketing agency dedicated to helping businesses grow through strategic online marketing solutions.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          
+          <div class="footer-col">
+            <h3>Quick Links</h3>
+            <a href="#">Home</a>
+            <a href="#services">Services</a>
+            <a href="#results">Case Studies</a>
+            <a href="#team">Our Team</a>
+            <a href="#contact">Contact</a>
+          </div>
+          
+          <div class="footer-col">
+            <h3>Services</h3>
+            <a href="#">SEO</a>
+            <a href="#">PPC Advertising</a>
+            <a href="#">Social Media</a>
+            <a href="#">Content Marketing</a>
+            <a href="#">Marketing Analytics</a>
+          </div>
+          
+          <div class="footer-col">
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter for marketing tips and industry insights.</p>
+            <form>
+              <input type="email" placeholder="Your Email" class="form-control" style="margin-bottom: 10px;">
+              <button type="submit" class="btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        
+        <div class="copyright">
+          <p>&copy; 2025 MarketPro Digital Marketing Agency. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Font Awesome for icons (would normally be a separate link) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  </body>
+</html>
