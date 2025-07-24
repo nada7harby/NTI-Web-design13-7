@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StrategicEdge Consulting</title>
+    <style>
+        /* Modern Reset & Base Styles */
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --secondary: #d69e2e;
+            --secondary-light: #ecc94b;
+            --light: #f7fafc;
+            --dark: #1a202c;
+            --gray: #4a5568;
+            --light-gray: #e2e8f0;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --radius-sm: 0.125rem;
+            --radius-md: 0.25rem;
+            --radius-lg: 0.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.25rem; }
+        h3 { font-size: 1.5rem; }
+        h4 { font-size: 1.25rem; }
+
+        p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary-light);
+            transform: translateY(-2px);
+        }
+
+        .text-center { text-align: center; }
+        .text-primary { color: var(--primary); }
+        .text-secondary { color: var(--secondary); }
+
+        /* Header - Minimalist Professional */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Navigation */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section - Split Screen Layout */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            padding-top: 5rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 2rem;
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero-image {
+            flex: 1;
+            background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+        }
+
+        .hero-title {
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--light-gray);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        /* Services Section - Card Grid */
+        .services {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-top: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-top-color: var(--secondary);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* About Section - Alternating Layout */
+        .about {
+            padding: 6rem 0;
+            background: var(--light);
+        }
+
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .about-section {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            height: 400px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Team Section - Circular Avatars */
+        .team {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--light);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .team-member:hover .member-avatar {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .member-name {
+            margin-bottom: 0.5rem;
+        }
+
+        .member-position {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials Section - Centered Cards */
+        .testimonials {
+            padding: 6rem 0;
+            background: var(--light);
+        }
+
+        .testimonial-cards {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 2rem 0;
+            scroll-snap-type: x mandatory;
+        }
+
+        .testimonial-card {
+            min-width: 400px;
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            scroll-snap-align: center;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            font-size: 4rem;
+            color: rgba(214, 158, 46, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* CTA Section - Simple Centered */
+        .cta {
+            padding: 6rem 0;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-title {
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .cta-text {
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            color: var(--light-gray);
+        }
+
+        /* Footer - Multi-column */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 6rem 0 3rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: inline-block;
+            color: white;
+        }
+
+        .footer-about {
+            max-width: 300px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-gray);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+            }
+            
+            .hero-content {
+                padding: 4rem 1.5rem;
+            }
+            
+            .hero-image {
+                min-height: 400px;
+            }
+            
+            .about-section {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .about-section:nth-child(even) {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.25rem; }
+            h2 { font-size: 1.75rem; }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-card {
+                min-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">StrategicEdge</a>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link">Home</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#team" class="nav-link">Team</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">Strategic Consulting for Business Growth</h1>
+                <p class="hero-subtitle">We help organizations navigate complex challenges and unlock their full potential through data-driven strategies and expert guidance.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-secondary">Our Services</a>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="text-center" style="max-width: 700px; margin: 0 auto 3rem;">Comprehensive solutions tailored to your business needs</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Business Strategy</h3>
+                    <p>Develop long-term plans to achieve competitive advantage and sustainable growth.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>Management Consulting</h3>
+                    <p>Improve organizational performance through operational optimization.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Financial Advisory</h3>
+                    <p>Expert guidance on capital structure, investments, and financial planning.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Digital Transformation</h3>
+                    <p>Leverage technology to reinvent business models and customer experiences.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <h3>M&A Advisory</h3>
+                    <p>Strategic support for mergers, acquisitions, and corporate restructuring.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Market Research</h3>
+                    <p>Data-driven insights to inform strategic decision-making.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            
+            <div class="about-container">
+                <div class="about-section">
+                    <div class="about-content">
+                        <h3>Our Approach</h3>
+                        <p>We combine deep industry expertise with innovative thinking to deliver customized solutions that drive measurable results. Our collaborative approach ensures we fully understand your unique challenges before recommending strategies.</p>
+                        <p>With offices in three countries and a network of global partners, we bring both local market knowledge and international perspective to every engagement.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Our Approach">
+                    </div>
+                </div>
+                
+                <div class="about-section">
+                    <div class="about-content">
+                        <h3>Our History</h3>
+                        <p>Founded in 2005, StrategicEdge began as a boutique consultancy focused on financial services. Today, we serve clients across industries while maintaining our commitment to personalized service and exceptional results.</p>
+                        <p>Our growth has been recognized by industry publications, but we measure success by the long-term partnerships we've built with our clients.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Our History">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <h2 class="section-title">Our Leadership Team</h2>
+            <p class="text-center" style="max-width: 700px; margin: 0 auto 3rem;">Seasoned professionals with diverse expertise</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Johnson" class="member-avatar">
+                    <h4 class="member-name">Sarah Johnson</h4>
+                    <p class="member-position">CEO & Founder</p>
+                    <p>20+ years in strategic consulting</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="member-avatar">
+                    <h4 class="member-name">Michael Chen</h4>
+                    <p class="member-position">Managing Partner</p>
+                    <p>Financial services specialist</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emma Rodriguez" class="member-avatar">
+                    <h4 class="member-name">Emma Rodriguez</h4>
+                    <p class="member-position">Director of Strategy</p>
+                    <p>Digital transformation expert</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Kim" class="member-avatar">
+                    <h4 class="member-name">David Kim</h4>
+                    <p class="member-position">Head of Research</p>
+                    <p>Data analytics pioneer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Testimonials</h2>
+            <p class="text-center" style="max-width: 700px; margin: 0 auto 3rem;">Hear from organizations we've helped transform</p>
+            
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>StrategicEdge completely transformed our approach to market expansion. Their insights helped us enter three new countries with confidence, resulting in 40% revenue growth.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="James Wilson" class="author-avatar">
+                        <div>
+                            <h4>James Wilson</h4>
+                            <p>CEO, GlobalTech</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>The digital transformation roadmap they developed was exactly what we needed to modernize our operations. Implementation was smooth and the results exceeded expectations.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Lisa Thompson" class="author-avatar">
+                        <div>
+                            <h4>Lisa Thompson</h4>
+                            <p>COO, FinServe</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>Their M&A advisory was invaluable during our acquisition process. They identified risks we hadn't considered and negotiated terms that protected our interests.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Robert Garcia" class="author-avatar">
+                        <div>
+                            <h4>Robert Garcia</h4>
+                            <p>President, ManuCorp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2 class="cta-title">Ready to Transform Your Business?</h2>
+            <p class="cta-text">Schedule a consultation with our experts to discuss how we can help you achieve your strategic objectives.</p>
+            <a href="#" class="btn btn-secondary">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">StrategicEdge</a>
+                    <p>Providing strategic consulting services to businesses worldwide since 2005.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">in</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">f</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Business Strategy</a></li>
+                        <li><a href="#">Management Consulting</a></li>
+                        <li><a href="#">Financial Advisory</a></li>
+                        <li><a href="#">Digital Transformation</a></li>
+                        <li><a href="#">M&A Advisory</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Insights</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Contact</h4>
+                    <p>123 Business Avenue<br>New York, NY 10001</p>
+                    <p>info@strategicedge.com<br>+1 (212) 555-0100</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 StrategicEdge Consulting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

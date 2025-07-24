@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Landing Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">
+        <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" alt="Logo" width="32" height="32" class="me-2">BrandName
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#hero">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#features">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="py-5 text-center bg-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7 mx-auto">
+          <h1 class="display-4 fw-bold mb-3">Welcome to Your Next Project</h1>
+          <p class="lead mb-4">Build beautiful, modern websites with ease. Bootstrap 5 gives you the tools to create responsive and stunning web pages in no time.</p>
+          <div class="d-flex justify-content-center gap-3">
+            <a href="#contact" class="btn btn-primary btn-lg shadow rounded-pill">Get Started</a>
+            <button type="button" class="btn btn-secondary btn-lg shadow rounded-pill" data-bs-toggle="modal" data-bs-target="#infoModal">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5 fw-bold">Features</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm border-0 rounded-4 text-center p-4">
+            <div class="mb-3">
+              <span class="fs-1 text-primary"><i class="bi bi-lightning-charge"></i></span>
+            </div>
+            <h5 class="fw-bold mb-2">Fast Performance</h5>
+            <p class="text-muted">Experience lightning-fast load times and smooth interactions on all devices.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm border-0 rounded-4 text-center p-4">
+            <div class="mb-3">
+              <span class="fs-1 text-success"><i class="bi bi-phone"></i></span>
+            </div>
+            <h5 class="fw-bold mb-2">Mobile Friendly</h5>
+            <p class="text-muted">Fully responsive layouts that look great on phones, tablets, and desktops.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm border-0 rounded-4 text-center p-4">
+            <div class="mb-3">
+              <span class="fs-1 text-info"><i class="bi bi-palette"></i></span>
+            </div>
+            <h5 class="fw-bold mb-2">Modern Design</h5>
+            <p class="text-muted">Clean, modern UI with soft colors and beautiful typography for a professional look.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <h2 class="text-center mb-4 fw-bold">Frequently Asked Questions</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="accordion shadow rounded-3" id="faqAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  What is Bootstrap 5?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Bootstrap 5 is the latest version of the popular open-source CSS framework for building responsive, mobile-first websites.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Is this landing page mobile-friendly?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Yes! The layout uses Bootstrap's grid system and utilities to ensure a seamless experience on all devices.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  How can I get started?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Simply click the "Get Started" button above or fill out the contact form below to reach out to us!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4 fw-bold">Contact Us</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <form class="shadow p-4 rounded-4 bg-white">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Your Name" required aria-label="Name">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="name@example.com" required aria-label="Email">
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required aria-label="Message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary rounded-pill px-4">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h5 class="modal-title" id="infoModalLabel">About This Landing Page</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          This landing page is built with Bootstrap 5, featuring a modern, responsive design and interactive components. Perfect for startups, portfolios, and businesses.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white text-center py-4 shadow-sm mt-5">
+    <div class="container">
+      <span class="text-muted">&copy; 2024 BrandName. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS and Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</body>
+</html> 

@@ -1,0 +1,11 @@
+.child{
+               background-color: aquamarine;
+               border: 2px solid ;
+}
+.container{
+               /* background-color: blueviolet !important; */
+               max-width: 800px;
+}
+.navbar{
+               background:linear-gradient(to bottom, red,blue);
+}

@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarketPro - Digital Solutions</title>
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .main-header {
+            background-color: #2a4365;
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+        
+        .main-header:hover {
+            background-color: #1e365d;
+        }
+        
+        .header-container {
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .branding {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .branding .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: white;
+            position: relative;
+        }
+        
+        .branding .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #f6ad55;
+            transition: width 0.3s ease;
+        }
+        
+        .branding:hover .logo::after {
+            width: 100%;
+        }
+        
+        .main-nav {
+            display: inline-block;
+            float: right;
+            vertical-align: middle;
+        }
+        
+        .main-nav ul {
+            list-style: none;
+        }
+        
+        .main-nav li {
+            display: inline-block;
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        .main-nav a {
+            color: white;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+        
+        .main-nav a:hover {
+            color: #f6ad55;
+        }
+        
+        .main-nav li::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #f6ad55;
+            transition: width 0.3s ease;
+        }
+        
+        .main-nav li:hover::before {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1920x800') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 200px 0 120px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 80px;
+            height: 3px;
+            background-color: #f6ad55;
+            margin-left: -40px;
+            transition: all 0.3s ease;
+        }
+        
+        .hero:hover h1::after {
+            width: 120px;
+            margin-left: -60px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #f6ad55;
+            color: #2a4365;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: left 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #f59e2e;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: #2a4365;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 60px;
+            height: 3px;
+            background-color: #f6ad55;
+            margin-left: -30px;
+            transition: all 0.3s ease;
+        }
+        
+        .section-title:hover h2::after {
+            width: 80px;
+            margin-left: -40px;
+        }
+        
+        .features-grid {
+            /* font-size: 0; */
+            text-align: center;
+        }
+        
+        .feature-box {
+            display: inline-block;
+            width: 30%;
+            margin: 0 1.5%;
+            padding: 30px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            vertical-align: top;
+        }
+        
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #f6ad55;
+            transition: height 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .feature-box:hover::before {
+            height: 8px;
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: #f6ad55;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+        
+        .feature-box:hover .feature-icon {
+            color: #dd6b20;
+        }
+        
+        .feature-box h3 {
+            color: #2a4365;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .feature-box p {
+            color: #4a5568;
+            margin-bottom: 20px;
+        }
+        
+        /* Data Table Section */
+        .data-section {
+            padding: 80px 0;
+            background-color: #f0f4f8;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .data-table caption {
+            text-align: left;
+            font-size: 24px;
+            font-weight: 600;
+            color: #2a4365;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            position: relative;
+        }
+        
+        .data-table caption::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 10px;
+            width: 50px;
+            height: 3px;
+            background-color: #f6ad55;
+            transition: width 0.3s ease;
+        }
+        
+        .data-table:hover caption::after {
+            width: 80px;
+        }
+        
+        .data-table thead {
+            background-color: #2a4365;
+            color: white;
+        }
+        
+        .data-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .data-table th::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            width: 0;
+            height: 2px;
+            background-color: #f6ad55;
+            transition: width 0.3s ease;
+        }
+        
+        .data-table th:hover::after {
+            width: calc(100% - 30px);
+        }
+        
+        .data-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+            transition: background-color 0.3s ease;
+        }
+        
+        .data-table tbody tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        
+        .data-table tbody tr:hover td {
+            background-color: #ebf8ff;
+        }
+        
+        .data-table .highlight {
+            color: #f6ad55;
+            font-weight: 600;
+        }
+        
+        .data-table .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            background-color: #e6fffa;
+            color: #38b2ac;
+        }
+        
+        /* Contact Form Section */
+        .contact-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .form-container {
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .form-wrapper {
+            display: inline-block;
+            width: 60%;
+            vertical-align: top;
+            padding-right: 5%;
+        }
+        
+        .form-sidebar {
+            display: inline-block;
+            width: 35%;
+            vertical-align: top;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid #f6ad55;
+            border-radius: 10px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .contact-form:hover::before {
+            opacity: 0.3;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2a4365;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+        }
+        
+        .form-control:focus {
+            border-color: #f6ad55;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(246, 173, 85, 0.2);
+            background-color: white;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-sidebar-box {
+            background-color: #2a4365;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-sidebar-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background-color: #f6ad55;
+            transition: height 0.3s ease;
+        }
+        
+        .form-sidebar-box:hover::before {
+            height: 100%;
+        }
+        
+        .form-sidebar-box h3 {
+            color: #f6ad55;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .form-sidebar-box h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #f6ad55;
+            transition: width 0.3s ease;
+        }
+        
+        .form-sidebar-box:hover h3::after {
+            width: 60px;
+        }
+        
+        .form-sidebar-box p {
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        .main-footer {
+            background-color: #1a202c;
+            color: #a0aec0;
+            padding: 60px 0 0;
+        }
+        
+        .footer-grid {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col {
+            display: inline-block;
+            width: 23%;
+            margin-right: 2%;
+            vertical-align: top;
+        }
+        
+        .footer-col:last-child {
+            margin-right: 0;
+        }
+        
+        .footer-col h3 {
+            color: #f6ad55;
+            margin-bottom: 20px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #f6ad55;
+            transition: width 0.3s ease;
+        }
+        
+        .footer-col:hover h3::after {
+            width: 60px;
+        }
+        
+        .footer-col p, .footer-col a {
+            margin-bottom: 15px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-col a:hover {
+            color: #f6ad55;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            background-color: #2d3748;
+            color: #a0aec0;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: #f6ad55;
+            color: #1a202c;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #2d3748;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .feature-box {
+                width: 48%;
+                margin-bottom: 30px;
+            }
+            
+            .form-wrapper, .form-sidebar {
+                width: 100%;
+                padding-right: 0;
+            }
+            
+            .form-sidebar {
+                margin-top: 30px;
+            }
+            
+            .footer-col {
+                width: 48%;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .branding, .main-nav {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+            
+            .main-nav {
+                margin-top: 15px;
+                float: none;
+            }
+            
+            .main-nav li {
+                margin: 0 10px;
+            }
+            
+            .feature-box, .footer-col {
+                width: 100%;
+                margin-right: 0;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="branding">
+                <a href="#" class="logo">MarketPro</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#data">Data</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Elevate Your Digital Marketing</h1>
+                <p>Data-driven strategies that deliver real results and accelerate your business growth in the digital landscape.</p>
+                <a href="#contact" class="btn">Get Started Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Core Features</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">📈</div>
+                    <h3>SEO Optimization</h3>
+                    <p>Improve your search rankings with our comprehensive SEO strategies tailored to your business.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="feature-icon">💰</div>
+                    <h3>PPC Campaigns</h3>
+                    <p>Launch targeted ad campaigns that drive qualified traffic and maximize your ROI.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="feature-icon">✍️</div>
+                    <h3>Content Strategy</h3>
+                    <p>Engage your audience with valuable content that builds trust and drives conversions.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Table Section -->
+    <section id="data" class="data-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Performance Metrics</h2>
+            </div>
+            
+            <table class="data-table">
+                <caption>Recent Campaign Results</caption>
+                <thead>
+                    <tr>
+                        <th>Campaign</th>
+                        <th>Impressions</th>
+                        <th>Clicks</th>
+                        <th>CTR</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Summer Sale</td>
+                        <td class="highlight">245,890</td>
+                        <td>12,450</td>
+                        <td class="highlight">5.06%</td>
+                        <td><span class="badge">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>Product Launch</td>
+                        <td class="highlight">189,340</td>
+                        <td>9,870</td>
+                        <td class="highlight">5.21%</td>
+                        <td><span class="badge">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Holiday Special</td>
+                        <td class="highlight">320,560</td>
+                        <td>18,230</td>
+                        <td class="highlight">5.69%</td>
+                        <td><span class="badge">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>Brand Awareness</td>
+                        <td class="highlight">412,780</td>
+                        <td>15,640</td>
+                        <td class="highlight">3.79%</td>
+                        <td><span class="badge">Paused</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+            </div>
+            
+            <div class="form-container">
+                <div class="form-wrapper">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" class="form-control">
+                                <option value="">Select a service</option>
+                                <option value="seo">SEO Services</option>
+                                <option value="ppc">PPC Advertising</option>
+                                <option value="content">Content Marketing</option>
+                                <option value="social">Social Media</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" class="form-control"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-block">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="form-sidebar">
+                    <div class="form-sidebar-box">
+                        <h3>Contact Info</h3>
+                        <p><strong>Email:</strong> info@marketpro.com</p>
+                        <p><strong>Phone:</strong> (555) 123-4567</p>
+                        <p><strong>Address:</strong> 123 Marketing Ave, Suite 100, New York, NY 10001</p>
+                    </div>
+                    
+                    <div class="form-sidebar-box">
+                        <h3>Business Hours</h3>
+                        <p><strong>Monday-Friday:</strong> 9:00 AM - 6:00 PM</p>
+                        <p><strong>Saturday:</strong> 10:00 AM - 2:00 PM</p>
+                        <p><strong>Sunday:</strong> Closed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About MarketPro</h3>
+                    <p>We're a full-service digital marketing agency dedicated to helping businesses grow through strategic online marketing solutions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="#">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#data">Data</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <a href="#">SEO Services</a>
+                    <a href="#">PPC Advertising</a>
+                    <a href="#">Content Marketing</a>
+                    <a href="#">Social Media</a>
+                    <a href="#">Web Analytics</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for marketing tips and insights.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" class="form-control" style="margin-bottom: 10px;">
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 MarketPro Digital Marketing. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

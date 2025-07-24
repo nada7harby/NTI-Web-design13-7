@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarketPro - Digital Solutions</title>
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .main-header {
+            background-color: #2a4365;
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+        
+        .main-header:hover {
+            background-color: #1e365d;
+        }
+        
+        .header-container {
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .branding {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .branding .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: white;
+            position: relative;
+        }
+        
+        .branding .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #f6ad55;
+            transition: width 0.3s ease;
+        }
+        
+        .branding:hover .logo::after {
+            width: 100%;
+        }
+        
+        .main-nav {
+            display: inline-block;
+            float: right;
+            vertical-align: middle;
+        }
+        
+        .main-nav ul {
+            list-style: none;
+        }
+        
+        .main-nav li {
+            display: inline-block;
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        .main-nav a {
+            color: white;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+        
+        .main-nav a:hover {
+            color: #f6ad55;
+        }
+        
+        .main-nav li::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #f6ad55;
+            transition: width 0.3s ease;
+        }
+        
+        .main-nav li:hover::before {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1920x800') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 200px 0 120px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 80px;
+            height: 3px;
+            background-color: #f6ad55;
+            margin-left: -40px;
+            transition: all 0.3s ease;
+        }
+        
+        .hero:hover h1::after {
+            width: 120px;
+            margin-left: -60px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #f6ad55;
+            color: #2a4365;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+     
+        
+        .btn:hover {
+            background-color: #f59e2e;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+       
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: #2a4365;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 60px;
+            height: 3px;
+            background-color: #f6ad55;
+            margin-left: -30px;
+            transition: all 0.3s ease;
+        }
+        
+        .section-title:hover h2::after {
+            width: 80px;
+            margin-left: -40px;
+        }
+        
+        .features-grid {
+            font-size: 0;
+            text-align: center;
+        }
+        
+        .feature-box {
+            display: inline-block;
+            width: 30%;
+            margin: 0 1.5%;
+            padding: 30px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            vertical-align: top;
+        }
+        
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #f6ad55;
+            transition: height 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .feature-box:hover::before {
+            height: 8px;
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: #f6ad55;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+        
+        .feature-box:hover .feature-icon {
+            color: #dd6b20;
+        }
+        
+        .feature-box h3 {
+            color: #2a4365;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .feature-box p {
+            color: #4a5568;
+            margin-bottom: 20px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: #2a4365;
+            color: white;
+        }
+        
+        .testimonial-slider {
+            display: inline-block;
+            width: 100%;
+            position: relative;
+        }
+        
+        .testimonial-item {
+            display: inline-block;
+            width: 100%;
+            padding: 30px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            vertical-align: top;
+        }
+        
+        .testimonial-item:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+        
+        .testimonial-item::before {
+            content: '\201C';
+            font-size: 60px;
+            color: rgba(246, 173, 85, 0.3);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .author-img {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            vertical-align: middle;
+            border: 3px solid #f6ad55;
+            transition: border-color 0.3s ease;
+        }
+        
+        .testimonial-item:hover .author-img {
+            border-color: #dd6b20;
+        }
+        
+        .author-info {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 15px;
+        }
+        
+        .author-info h4 {
+            color: #f6ad55;
+            margin-bottom: 5px;
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .pricing-grid {
+            /* font-size: 0; */
+            text-align: center;
+        }
+        
+        .pricing-card {
+            display: inline-block;
+            width: 31%;
+            margin: 0 1%;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            vertical-align: top;
+            position: relative;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #f6ad55;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-card:hover::before {
+            height: 8px;
+            background-color: #dd6b20;
+        }
+        
+        .pricing-header {
+            padding: 30px;
+            background-color: #2a4365;
+            color: white;
+        }
+        
+        .pricing-header h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .price {
+            font-size: 36px;
+            font-weight: 700;
+            color: #f6ad55;
+        }
+        
+        .price span {
+            font-size: 16px;
+            font-weight: normal;
+        }
+        
+        .pricing-body {
+            padding: 30px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .pricing-features li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: #f6ad55;
+            font-weight: bold;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background-color: #f6ad55;
+            color: #2a4365;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta .btn {
+            background-color: #2a4365;
+            color: white;
+        }
+        
+        .cta .btn:hover {
+            background-color: #1e365d;
+        }
+        
+        /* Footer */
+        .main-footer {
+            background-color: #1a202c;
+            color: #a0aec0;
+            padding: 60px 0 0;
+        }
+        
+        .footer-grid {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col {
+            display: inline-block;
+            width: 23%;
+            margin-right: 2%;
+            vertical-align: top;
+        }
+        
+        .footer-col:last-child {
+            margin-right: 0;
+        }
+        
+        .footer-col h3 {
+            color: #f6ad55;
+            margin-bottom: 20px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #f6ad55;
+            transition: width 0.3s ease;
+        }
+        
+        .footer-col:hover h3::after {
+            width: 60px;
+        }
+        
+        .footer-col p, .footer-col a {
+            margin-bottom: 15px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-col a:hover {
+            color: #f6ad55;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            background-color: #2d3748;
+            color: #a0aec0;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: #f6ad55;
+            color: #1a202c;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #2d3748;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .feature-box, .pricing-card {
+                width: 48%;
+                margin-bottom: 30px;
+            }
+            
+            .footer-col {
+                width: 48%;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .branding, .main-nav {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+            
+            .main-nav {
+                margin-top: 15px;
+                float: none;
+            }
+            
+            .main-nav li {
+                margin: 0 10px;
+            }
+            
+            .feature-box, .pricing-card, .footer-col {
+                width: 100%;
+                margin-right: 0;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="branding">
+                <a href="#" class="logo">MarketPro</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Elevate Your Digital Marketing</h1>
+                <p>Data-driven strategies that deliver real results and accelerate your business growth in the digital landscape.</p>
+                <a href="#contact" class="btn">Get Started Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Core Features</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">📈</div>
+                    <h3>SEO Optimization</h3>
+                    <p>Improve your search rankings with our comprehensive SEO strategies tailored to your business.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="feature-icon">💰</div>
+                    <h3>PPC Campaigns</h3>
+                    <p>Launch targeted ad campaigns that drive qualified traffic and maximize your ROI.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                
+                <div class="feature-box">
+                    <div class="feature-icon">✍️</div>
+                    <h3>Content Strategy</h3>
+                    <p>Engage your audience with valuable content that builds trust and drives conversions.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <p>MarketPro transformed our online presence. Our organic traffic increased by 300% within six months of working with them.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="img1.jpg" alt="Client" style="width: 100%;">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>CEO, TechSolutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Simple, Transparent Pricing</h2>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Starter</h3>
+                        <div class="price">$499<span>/month</span></div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li>Basic SEO Optimization</li>
+                            <li>Monthly Analytics Report</li>
+                            <li>Keyword Research</li>
+                            <li>Email Support</li>
+                        </ul>
+                        <a href="#" class="btn">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <div class="price">$999<span>/month</span></div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li>Advanced SEO Strategy</li>
+                            <li>PPC Campaign Management</li>
+                            <li>Content Creation</li>
+                            <li>Weekly Reports</li>
+                            <li>Priority Support</li>
+                        </ul>
+                        <a href="#" class="btn">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <div class="price">$1999<span>/month</span></div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li>Full Digital Marketing Suite</li>
+                            <li>Dedicated Account Manager</li>
+                            <li>Social Media Management</li>
+                            <li>Custom Analytics Dashboard</li>
+                            <li>24/7 Support</li>
+                        </ul>
+                        <a href="#" class="btn">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Get started with MarketPro today and see the difference professional digital marketing can make.</p>
+            <a href="#contact" class="btn">Contact Us Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About MarketPro</h3>
+                    <p>We're a full-service digital marketing agency dedicated to helping businesses grow through strategic online marketing solutions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="#">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <a href="#">SEO Services</a>
+                    <a href="#">PPC Advertising</a>
+                    <a href="#">Content Marketing</a>
+                    <a href="#">Social Media</a>
+                    <a href="#">Web Analytics</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>123 Marketing Ave, Suite 100</p>
+                    <p>New York, NY 10001</p>
+                    <p>Phone: (555) 123-4567</p>
+                    <p>Email: info@marketpro.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 MarketPro Digital Marketing. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
