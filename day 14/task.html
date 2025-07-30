@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مثال Loop على العناصر</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+
+      .item-list {
+        margin-top: 20px;
+      }
+
+      .item {
+        padding: 10px;
+        margin: 10px 0;
+        background-color: #f9f9f9;
+        border-left: 4px solid #4caf50;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .item button {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .item button:hover {
+        background-color: #d32f2f;
+      }
+
+      .add-item {
+        margin-top: 20px;
+        display: flex;
+      }
+
+      .add-item input {
+        flex-grow: 1;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      .add-item button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        margin-right: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .add-item button:hover {
+        background-color: #388e3c;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>قائمة المهام</h1>
+
+      <div class="add-item">
+        <button id="addBtn">إضافة عنصر</button>
+        <input type="text" id="itemInput" placeholder="أدخل مهمة جديدة" />
+      </div>
+
+      <div class="item-list" id="itemList">
+        <!-- العناصر ستضاف هنا ديناميكيًا -->
+      </div>
+    </div>
+
+    <script>
+      // بيانات أولية
+      let items = [
+        "شراء الخضروات",
+        "إنهاء التقرير",
+        "الذهاب إلى الصالة الرياضية",
+      ];
+
+      // عناصر DOM
+      const itemList = document.getElementById("itemList");
+      const itemInput = document.getElementById("itemInput");
+      const addBtn = document.getElementById("addBtn");
+
+      // دالة لعرض العناصر
+      function renderItems() {
+        // مسح القائمة الحالية
+        itemList.innerHTML = "";
+
+        // Loop على جميع العناصر وعرضها
+        items.forEach((item, index) => {
+          const itemElement = document.createElement("div");
+          itemElement.className = "item";
+
+          itemElement.innerHTML = `
+                    <span>${item}</span>
+                    <button onclick="removeItem(${index})">حذف</button>
+                `;
+
+          itemList.appendChild(itemElement);
+        });
+      }
+
+      // دالة لإضافة عنصر جديد
+      function addItem() {
+        const newItem = itemInput.value.trim();
+        if (newItem) {
+          items.push(newItem);
+          itemInput.value = "";
+          renderItems();
+        }
+      }
+
+      // دالة لحذف عنصر
+      function removeItem(index) {
+        items.splice(index, 1);
+        renderItems();
+      }
+
+      // أحداث
+      addBtn.addEventListener("click", addItem);
+      itemInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          addItem();
+        }
+      });
+
+      // عرض العناصر عند تحميل الصفحة
+      document.addEventListener("DOMContentLoaded", renderItems);
+    </script>
+  </body>
+</html>
