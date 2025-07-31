@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg shadow navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">DOM Shop</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarSupportedContent"
+          >
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+               <div class="container   d-flex align-items-center  ">
+        <div class="row align-items-center justify-content-around">
+          <div class="col-lg-4">
+            <h1>Modern DOM Manipulation</h1>
+            <p>A clean, responsive design built with pure JavaScript DOM manipulatio
+</p>
+<div class="btns ">
+               <button class="btn btn-primary ">view Product</button>
+               <button class="btn btn-outline-primary" id="btn-add" data-bs-toggle="modal" data-bs-target="#myModal">add Product</button>
+</div>
+          </div>
+          <div class="col-lg-7">
+               <img src="Welcome-amico.png" alt="">
+          </div>
+        </div>
+      </section>
+      </div>
+      <section class="child2 container d-flex align-items-center flex-column" >
+               <h1 class="text-center my-5">our Product</h1>
+               <div class="row m-0  justify-content-start w-75 " id="containerProduct">
+                            <div class="col-lg-3 p-0 shadow mx-4 my-2">
+                                            <div class="card" >
+  <img src="Attack On Titan (15).jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h3 class="card-title">Card title</h3>
+    <h5 class="text-primary">33$</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+                              </div>  
+                              <div class="col-lg-3 p-0 shadow  mx-4 my-2">
+                                            <div class="card">
+  <img src="Attack On Titan (15).jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h3 class="card-title">Card title</h3>
+    <h5 class="text-primary">33$</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+                              </div>
+                              <div class="col-lg-3 p-0 shadow  mx-4 my-2">
+                                            <div class="card" >
+  <img src="Attack On Titan (15).jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h3 class="card-title">Card title</h3>
+    <h5 class="text-primary">33$</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+                              </div>
+                              <div class="col-lg-3 p-0 shadow  mx-4 my-2 ">
+                                            <div class="card" >
+  <img src="Attack On Titan (15).jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h3 class="card-title">Card title</h3>
+    <h5 class="text-primary">33$</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+                              </div>
+               </div>
+      </section>
+      <section class="child3 container  py-4  ">
+<h1 class="text-center">Get In Touch
+</h1>
+<div class="">
+  <div class="row justify-content-center">
+    <div class="col-6 shadow p-4 rounded-3 " id="container-message">
+      <form id="form-meesage">
+         <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Name</label>
+    <input type="text" class="form-control" id="exampleInputName1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+ <div>
+<label for="comment">Comments:</label>
+<textarea class="form-control" rows="5" id="comment" name="text"></textarea></div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary rounded-pill">Send message</button>
+</form>
+
+    </div>
+  </div>
+</div>
+      </section>
+    </main>
+    <div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add New Product</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body p-3">
+          <form id="form-add">
+         <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"> Product Name</label>
+    <input type="text" class="form-control" id="nameProduct" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">price </label>
+    <input type="number" class="form-control" id="priceProduct" aria-describedby="emailHelp">
+  </div>
+ <div>
+<label for="comment">Desciption:</label>
+<textarea class="form-control" rows="5" id="decripProduct" name="text"></textarea></div>
+ 
+  <button type="submit" class="btn btn-primary rounded-pill mt-3">add product</button>
+</form>
+      </div>
+
+      <!-- Modal footer -->
+
+
+    </div>
+  </div>
+</div>
+    
+    <script src="script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

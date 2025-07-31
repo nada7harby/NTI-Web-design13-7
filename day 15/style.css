@@ -1,0 +1,112 @@
+img {
+  width: 100%;
+}
+.nav-link {
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: rgb(3, 44, 106) !important;
+}
+.nav-link::before {
+  content: "";
+  position: absolute;
+  left: 5;
+  bottom: 6px;
+  width: 0;
+  height: 2px;
+  background-color: rgb(3, 44, 106);
+  transition: 0.5s;
+}
+
+.nav-link:hover::before {
+  width: 95%;
+}
+.hero {
+  background: linear-gradient(
+    135deg,
+    rgba(67, 97, 238, 0.1) 0%,
+    rgba(250, 250, 250, 1) 100%
+  );
+}
+
+.hero .container {
+  min-height: 70vh;
+}
+
+.hero .row {
+  height: 100%;
+}
+
+.hero h1 {
+  font-size: 3.7rem;
+  font-weight: bold;
+  background: linear-gradient(
+    to right,
+    rgb(18, 11, 210) 20%,
+    rgb(88, 6, 111) 70%,
+    rgb(222, 11, 218)
+  );
+  color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  color: gray;
+  margin-bottom: 20px;
+}
+.hero button {
+  border-radius: 30px !important;
+}
+.child2 h1 {
+  position: relative;
+}
+
+.child2 h1:after {
+  content: "";
+  position: absolute;
+  width: 85px;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    rgb(66, 8, 225),
+    rgb(179, 7, 217),
+    rgb(255, 0, 140)
+  );
+  left: 45%;
+  bottom: -10px;
+}
+
+.child3 h1 {
+  position: relative;
+  margin-bottom: 40px;
+}
+.child3 h1::after {
+  content: "";
+  width: 90px;
+  height: 5px;
+  position: absolute;
+  left: 45%;
+  bottom: -10px;
+  background: linear-gradient(
+    to right,
+    rgb(66, 8, 225),
+    rgb(179, 7, 217),
+    rgb(255, 0, 140)
+  );
+}
+.card {
+  height: 100%;
+}
+.message {
+  padding: 20px;
+  border-radius: 20px;
+  display: none;
+}
+@media (max-width: 800px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+}

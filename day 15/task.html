@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern DOM Shop</title>
+    <style>
+      :root {
+        --primary: #4361ee;
+        --primary-dark: #3a0ca3;
+        --secondary: #f72585;
+        --dark: #212529;
+        --light: #f8f9fa;
+        --gray: #6c757d;
+        --success: #4cc9f0;
+        --danger: #f94144;
+        --warning: #f8961e;
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        color: var(--dark);
+        background-color: #fafafa;
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        box-shadow: var(--shadow);
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+        transition: var(--transition);
+      }
+
+      .navbar.scrolled {
+        background-color: rgba(255, 255, 255, 0.95);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 0;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .logo:hover {
+        color: var(--primary-dark);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        position: relative;
+        transition: var(--transition);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary);
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+      }
+
+      .hamburger {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background-color: var(--dark);
+        position: relative;
+        transition: var(--transition);
+      }
+
+      .hamburger::before,
+      .hamburger::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--dark);
+        transition: var(--transition);
+      }
+
+      .hamburger::before {
+        top: -8px;
+      }
+
+      .hamburger::after {
+        top: 8px;
+      }
+
+      .menu-toggle.active .hamburger {
+        background-color: transparent;
+      }
+
+      .menu-toggle.active .hamburger::before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+
+      .menu-toggle.active .hamburger::after {
+        transform: rotate(-45deg);
+        top: 0;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(
+          135deg,
+          rgba(67, 97, 238, 0.1) 0%,
+          rgba(250, 250, 250, 1) 100%
+        );
+        padding-top: 80px;
+      }
+
+      .hero-content {
+        max-width: 600px;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero-subtitle {
+        font-size: 1.25rem;
+        color: var(--gray);
+        margin-bottom: 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+      }
+
+      .btn:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--primary);
+        border: 2px solid var(--primary);
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .btn-danger {
+        background-color: var(--danger);
+      }
+
+      .btn-danger:hover {
+        background-color: #d00000;
+      }
+
+      .btn-warning {
+        background-color: var(--warning);
+      }
+
+      .btn-warning:hover {
+        background-color: #e07f00;
+      }
+
+      .btn-success {
+        background-color: var(--success);
+      }
+
+      .btn-success:hover {
+        background-color: #00b4d8;
+      }
+
+      /* Products Section */
+      .section {
+        padding: 2rem 0;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        margin: 1rem auto;
+        border-radius: 2px;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .product-card {
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .product-image {
+        height: 200px;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray);
+        font-weight: 600;
+      }
+
+      .product-info {
+        padding: 1.5rem;
+      }
+
+      .product-name {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .product-price {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      .product-description {
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+      }
+
+      /* About Section */
+      .about-content {
+        background-color: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 2rem;
+      }
+
+      .about-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .team-members {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .team-card {
+        background-color: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .team-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .team-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .team-role {
+        color: var(--primary);
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+
+      .team-bio {
+        color: var(--gray);
+      }
+
+      /* Contact Section */
+      .contact-form {
+        background-color: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+      }
+
+      textarea.form-control {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .message-card {
+        background-color: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        margin-top: 2rem;
+        display: none;
+      }
+
+      .message-card.show {
+        display: block;
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      .message-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--primary);
+      }
+
+      .message-content {
+        color: var(--dark);
+      }
+
+      /* Modal */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        opacity: 0;
+        pointer-events: none;
+        transition: var(--transition);
+        backdrop-filter: blur(5px);
+      }
+
+      .modal.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .modal-content {
+        background-color: white;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 500px;
+        padding: 2rem;
+        transform: translateY(-50px);
+        transition: var(--transition);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .modal.active .modal-content {
+        transform: translateY(0);
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .modal-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--gray);
+        transition: var(--transition);
+      }
+
+      .close-btn:hover {
+        color: var(--dark);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 4rem 0 2rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-column h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+
+      .footer-column h3::after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 2px;
+        background: var(--primary);
+        margin-top: 0.5rem;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.75rem;
+      }
+
+      .footer-links a {
+        color: #adb5bd;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: white;
+        padding-left: 5px;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #adb5bd;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      .delay-1 {
+        animation-delay: 0.2s;
+      }
+      .delay-2 {
+        animation-delay: 0.4s;
+      }
+      .delay-3 {
+        animation-delay: 0.6s;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .hero-title {
+          font-size: 2.8rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          background-color: white;
+          flex-direction: column;
+          align-items: center;
+          padding: 2rem 0;
+          gap: 1.5rem;
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+          transform: translateY(-150%);
+          transition: var(--transition);
+        }
+
+        .nav-links.active {
+          transform: translateY(0);
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.1rem;
+        }
+
+        .section {
+          padding: 4rem 0;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .about-actions {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .btn {
+          padding: 0.6rem 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="#" class="logo">DOM Shop</a>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span class="hamburger"></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div
+        class="container"
+        style="
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+        "
+      >
+        <div class="hero-content animate">
+          <h1 class="hero-title">Modern DOM Manipulation</h1>
+          <p class="hero-subtitle">
+            A clean, responsive design built with pure JavaScript DOM
+            manipulation
+          </p>
+          <div class="hero-buttons">
+            <a href="#products" class="btn">View Products</a>
+            <button id="openModalBtn" class="btn btn-secondary">
+              Add Product
+            </button>
+          </div>
+        </div>
+        <div style="padding: 20px 0 ;text-align: center;">
+          <img src="Welcome-amico.png" alt="" width="80%" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section" id="products">
+      <div class="container">
+        <h2 class="section-title">Our Products</h2>
+        <div class="products-grid" id="productsContainer">
+          <!-- Products will be dynamically inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title animate">About Us</h2>
+        <div class="about-content animate delay-1">
+          <p>
+            We're a demo shop showcasing modern DOM manipulation techniques with
+            vanilla JavaScript. No frameworks or libraries - just pure, clean
+            code.
+          </p>
+          <p>Use the buttons below to interact with our team members list:</p>
+
+          <div class="about-actions">
+            <button id="addMemberBtn" class="btn btn-success">
+              Add Team Member
+            </button>
+            <button id="removeMemberBtn" class="btn btn-danger">
+              Remove Last Member
+            </button>
+            <button id="updateMemberBtn" class="btn btn-warning">
+              Update First Member
+            </button>
+            <button id="clearMembersBtn" class="btn btn-secondary">
+              Clear All Members
+            </button>
+          </div>
+
+          <div class="team-members" id="teamMembersContainer">
+            <!-- Team members will be dynamically inserted here -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <div class="container">
+        <h2 class="section-title animate">Get In Touch</h2>
+        <div class="contact-form animate delay-1">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="contactName" class="form-label">Your Name</label>
+              <input
+                type="text"
+                id="contactName"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">Email Address</label>
+              <input
+                type="email"
+                id="contactEmail"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="contactMessage" class="form-label">Message</label>
+              <textarea
+                id="contactMessage"
+                class="form-control"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+
+          <div class="message-card" id="messageCard">
+            <h3 class="message-title">Thank You!</h3>
+            <p class="message-content" id="messageContent"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>DOM Shop</h3>
+            <p>Building modern web interfaces with vanilla JavaScript.</p>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#products">Products</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+              <li><a href="#">JavaScript Docs</a></li>
+              <li><a href="#">CSS Tricks</a></li>
+              <li><a href="#">HTML Reference</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 DOM Shop Demo. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Add Product Modal -->
+    <div class="modal" id="productModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Add New Product</h3>
+          <button class="close-btn" id="closeModalBtn">&times;</button>
+        </div>
+        <form id="productForm">
+          <div class="form-group">
+            <label for="productName" class="form-label">Product Name</label>
+            <input type="text" id="productName" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="productPrice" class="form-label">Price</label>
+            <input
+              type="number"
+              id="productPrice"
+              class="form-control"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="productDescription" class="form-label"
+              >Description</label
+            >
+            <textarea
+              id="productDescription"
+              class="form-control"
+              rows="3"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn">Add Product</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add Team Member Modal -->
+    <div class="modal" id="teamMemberModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Add Team Member</h3>
+          <button class="close-btn" id="closeTeamModalBtn">&times;</button>
+        </div>
+        <form id="teamMemberForm">
+          <div class="form-group">
+            <label for="memberName" class="form-label">Name</label>
+            <input type="text" id="memberName" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="memberRole" class="form-label">Role</label>
+            <input type="text" id="memberRole" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="memberBio" class="form-label">Bio</label>
+            <textarea
+              id="memberBio"
+              class="form-control"
+              rows="3"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn">Add Member</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Sample products data
+        const products = [
+          {
+            name: "JavaScript Mastery",
+            price: 49.99,
+            description:
+              "Learn advanced JavaScript concepts and DOM manipulation techniques.",
+          },
+          {
+            name: "CSS Wizardry",
+            price: 39.99,
+            description:
+              "Master modern CSS layouts, animations, and responsive design.",
+          },
+          {
+            name: "HTML Essentials",
+            price: 29.99,
+            description: "The complete guide to semantic HTML5 markup.",
+          },
+          {
+            name: "Web Performance",
+            price: 59.99,
+            description: "Optimize your websites for blazing fast performance.",
+          },
+        ];
+
+        // Sample team members data
+        let teamMembers = [
+          {
+            name: "John Doe",
+            role: "Frontend Developer",
+            bio: "Specializes in JavaScript and modern CSS techniques.",
+          },
+          {
+            name: "Jane Smith",
+            role: "UI/UX Designer",
+            bio: "Creates beautiful and intuitive user interfaces.",
+          },
+          {
+            name: "Mike Johnson",
+            role: "Backend Developer",
+            bio: "Handles all the server-side magic.",
+          },
+        ];
+
+        // DOM Elements
+        const productsContainer = document.getElementById("productsContainer");
+        const teamMembersContainer = document.getElementById(
+          "teamMembersContainer"
+        );
+        const productModal = document.getElementById("productModal");
+        const teamMemberModal = document.getElementById("teamMemberModal");
+        const openModalBtn = document.getElementById("openModalBtn");
+        const closeModalBtn = document.getElementById("closeModalBtn");
+        const closeTeamModalBtn = document.getElementById("closeTeamModalBtn");
+        const productForm = document.getElementById("productForm");
+        const teamMemberForm = document.getElementById("teamMemberForm");
+        const contactForm = document.getElementById("contactForm");
+        const messageCard = document.getElementById("messageCard");
+        const messageContent = document.getElementById("messageContent");
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+        const addMemberBtn = document.getElementById("addMemberBtn");
+        const removeMemberBtn = document.getElementById("removeMemberBtn");
+        const updateMemberBtn = document.getElementById("updateMemberBtn");
+        const clearMembersBtn = document.getElementById("clearMembersBtn");
+
+        // Render products
+        function renderProducts() {
+          productsContainer.innerHTML = "";
+          products.forEach((product, index) => {
+            const productCard = document.createElement("div");
+            productCard.className = "product-card animate";
+            productCard.style.animationDelay = `${index * 0.1}s`;
+            productCard.innerHTML = `
+                        <div class="product-image">Product Image</div>
+                        <div class="product-info">
+                            <h3 class="product-name">${product.name}</h3>
+                            <p class="product-price">$${product.price.toFixed(
+                              2
+                            )}</p>
+                            <p class="product-description">${
+                              product.description
+                            }</p>
+                        </div>
+                    `;
+            productsContainer.appendChild(productCard);
+          });
+        }
+
+        // Render team members
+        function renderTeamMembers() {
+          teamMembersContainer.innerHTML = "";
+          teamMembers.forEach((member, index) => {
+            const memberCard = document.createElement("div");
+            memberCard.className = "team-card animate";
+            memberCard.style.animationDelay = `${index * 0.1}s`;
+            memberCard.innerHTML = `
+                        <h3 class="team-name">${member.name}</h3>
+                        <p class="team-role">${member.role}</p>
+                        <p class="team-bio">${member.bio}</p>
+                    `;
+            teamMembersContainer.appendChild(memberCard);
+          });
+        }
+
+        // Modal functionality
+        openModalBtn.addEventListener("click", () => {
+          productModal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        });
+
+        closeModalBtn.addEventListener("click", () => {
+          productModal.classList.remove("active");
+          document.body.style.overflow = "auto";
+        });
+
+        closeTeamModalBtn.addEventListener("click", () => {
+          teamMemberModal.classList.remove("active");
+          document.body.style.overflow = "auto";
+        });
+
+        productModal.addEventListener("click", (e) => {
+          if (e.target === productModal) {
+            productModal.classList.remove("active");
+            document.body.style.overflow = "auto";
+          }
+        });
+
+        teamMemberModal.addEventListener("click", (e) => {
+          if (e.target === teamMemberModal) {
+            teamMemberModal.classList.remove("active");
+            document.body.style.overflow = "auto";
+          }
+        });
+
+        // Product form submission
+        productForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const newProduct = {
+            name: document.getElementById("productName").value,
+            price: parseFloat(document.getElementById("productPrice").value),
+            description: document.getElementById("productDescription").value,
+          };
+
+          products.push(newProduct);
+          renderProducts();
+
+          productForm.reset();
+          productModal.classList.remove("active");
+          document.body.style.overflow = "auto";
+
+          // Scroll to the new product
+          setTimeout(() => {
+            productsContainer.lastElementChild.scrollIntoView({
+              behavior: "smooth",
+            });
+          }, 300);
+        });
+
+        // Contact form submission
+        contactForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const name = document.getElementById("contactName").value;
+          const email = document.getElementById("contactEmail").value;
+          const message = document.getElementById("contactMessage").value;
+
+          messageContent.textContent = `Thank you for your message, ${name}! We'll get back to you at ${email} soon.`;
+          messageCard.classList.add("show");
+
+          contactForm.reset();
+
+          // Hide message after 5 seconds
+          setTimeout(() => {
+            messageCard.classList.remove("show");
+          }, 5000);
+        });
+
+        // Team member buttons functionality
+        addMemberBtn.addEventListener("click", () => {
+          teamMemberModal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        });
+
+        removeMemberBtn.addEventListener("click", () => {
+          if (teamMembers.length > 0) {
+            teamMembers.pop();
+            renderTeamMembers();
+          } else {
+            alert("No more members to remove!");
+          }
+        });
+
+        updateMemberBtn.addEventListener("click", () => {
+          if (teamMembers.length > 0) {
+            teamMembers[0].name =
+              prompt("Enter new name:", teamMembers[0].name) ||
+              teamMembers[0].name;
+            teamMembers[0].role =
+              prompt("Enter new role:", teamMembers[0].role) ||
+              teamMembers[0].role;
+            teamMembers[0].bio =
+              prompt("Enter new bio:", teamMembers[0].bio) ||
+              teamMembers[0].bio;
+            renderTeamMembers();
+          } else {
+            alert("No members to update!");
+          }
+        });
+
+        clearMembersBtn.addEventListener("click", () => {
+          if (confirm("Are you sure you want to clear all team members?")) {
+            teamMembers = [];
+            renderTeamMembers();
+          }
+        });
+
+        // Team member form submission
+        teamMemberForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const newMember = {
+            name: document.getElementById("memberName").value,
+            role: document.getElementById("memberRole").value,
+            bio: document.getElementById("memberBio").value,
+          };
+
+          teamMembers.push(newMember);
+          renderTeamMembers();
+
+          teamMemberForm.reset();
+          teamMemberModal.classList.remove("active");
+          document.body.style.overflow = "auto";
+
+          // Scroll to the new member
+          setTimeout(() => {
+            teamMembersContainer.lastElementChild.scrollIntoView({
+              behavior: "smooth",
+            });
+          }, 300);
+        });
+
+        // Mobile menu toggle
+        menuToggle.addEventListener("click", () => {
+          menuToggle.classList.toggle("active");
+          navLinks.classList.toggle("active");
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+          link.addEventListener("click", () => {
+            menuToggle.classList.remove("active");
+            navLinks.classList.remove("active");
+          });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener("scroll", () => {
+          const navbar = document.querySelector(".navbar");
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        });
+
+        // Intersection Observer for animations
+        const animateElements = document.querySelectorAll(".animate");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = "translateY(0)";
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        animateElements.forEach((el) => {
+          el.style.opacity = 0;
+          el.style.transform = "translateY(20px)";
+          el.style.transition =
+            "opacity 0.6s ease-out, transform 0.6s ease-out";
+          observer.observe(el);
+        });
+
+        // Initial render
+        renderProducts();
+        renderTeamMembers();
+      });
+    </script>
+  </body>
+</html>
